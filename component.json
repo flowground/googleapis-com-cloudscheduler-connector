@@ -1,0 +1,203 @@
+{
+    "title": "Cloud Scheduler",
+    "description": "Creates and manages jobs run on a regular recurring schedule.",
+    "docsUrl": "https://cloud.google.com/scheduler/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/cloudscheduler/v1beta1/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://cloudscheduler.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "cloudscheduler_projects_locations_jobs_delete": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_delete.js",
+            "title": "Deletes a job.",
+            "description": "Deletes a job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_get": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_get.js",
+            "title": "Gets a job.",
+            "description": "Gets a job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_patch": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_patch.js",
+            "title": "Updates a job.\n\nIf successful, the updated Job is returned. If the job does\nnot exist, `NOT_FOUND` is returned.\n\nIf UpdateJob does not successfully return, it is possible for the\njob to be in an Job.State.UPDATE_FAILED state. A job in this state may\nnot be executed. If this happens, retry the UpdateJob request\nuntil a successful response is received.",
+            "description": "Updates a job.\n\nIf successful, the updated Job is returned. If the job does\nnot exist, `NOT_FOUND` is returned.\n\nIf UpdateJob does not successfully return, it is possible for the\njob to be in an Job.State.UPDATE_FAILED state. A job in this state may\nnot be executed. If this happens, retry the UpdateJob request\nuntil a successful response is received.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_list": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_list.js",
+            "title": "Lists information about the supported locations for this service.",
+            "description": "Lists information about the supported locations for this service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_pause": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_pause.js",
+            "title": "Pauses a job.\n\nIf a job is paused then the system will stop executing the job\nuntil it is re-enabled via ResumeJob. The\nstate of the job is stored in state; if paused it\nwill be set to Job.State.PAUSED. A job must be in Job.State.ENABLED\nto be paused.",
+            "description": "Pauses a job.\n\nIf a job is paused then the system will stop executing the job\nuntil it is re-enabled via ResumeJob. The\nstate of the job is stored in state; if paused it\nwill be set to Job.State.PAUSED. A job must be in Job.State.ENABLED\nto be paused.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_pause.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_resume": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_resume.js",
+            "title": "Resume a job.\n\nThis method reenables a job after it has been Job.State.PAUSED. The\nstate of a job is stored in Job.state; after calling this method it\nwill be set to Job.State.ENABLED. A job must be in\nJob.State.PAUSED to be resumed.",
+            "description": "Resume a job.\n\nThis method reenables a job after it has been Job.State.PAUSED. The\nstate of a job is stored in Job.state; after calling this method it\nwill be set to Job.State.ENABLED. A job must be in\nJob.State.PAUSED to be resumed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_resume.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_run": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_run.js",
+            "title": "Forces a job to run now.\n\nWhen this method is called, Cloud Scheduler will dispatch the job, even\nif the job is already running.",
+            "description": "Forces a job to run now.\n\nWhen this method is called, Cloud Scheduler will dispatch the job, even\nif the job is already running.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_run.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_list": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_list.js",
+            "title": "Lists jobs.",
+            "description": "Lists jobs.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "cloudscheduler_projects_locations_jobs_create": {
+            "main": "./lib/actions/cloudscheduler_projects_locations_jobs_create.js",
+            "title": "Creates a job.",
+            "description": "Creates a job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/cloudscheduler_projects_locations_jobs_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
